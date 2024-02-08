@@ -1,0 +1,28 @@
+select 
+    CAST(ad_id as string) as ad_id, 
+    add_to_cart, 
+    CAST(adset_id as string) as adset_id, 
+    CAST(campaign_id as string) as campaign_id,
+    channel, 
+    clicks, 
+    comments, 
+    CAST(creative_id as string) as creative_id, 
+    date, 
+    (add_to_cart + comments + likes + shares + views + mobile_app_install + purchase + complete_registration) as engagements,
+    impressions, 
+    mobile_app_install as installs, 
+    likes, 
+    inline_link_clicks as link_clicks,
+    '' as placement_id,
+    0 as post_click_conversions,
+    0 as post_view_conversions,
+    0 as posts,
+    purchase, 
+    complete_registration as registrations, 
+    0 as revenue,
+    shares,
+    spend, 
+    purchase as total_conversions,
+    views as video_views
+
+from {{ ref('src_ads_creative_facebook_all_data') }}
